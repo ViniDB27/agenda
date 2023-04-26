@@ -12,6 +12,7 @@ route.get('/contato', loginRequired, contatoController.index);
 route.post('/contato/register', loginRequired, contatoController.register);
 route.get('/contato/:id', loginRequired, contatoController.editIndex);
 route.post('/contato/:id', loginRequired, contatoController.edit);
+route.get('/contato/delete/:id', loginRequired, contatoController.delete);
 
 route.get('/login', loginController.index);
 route.post('/login/register', loginController.register);

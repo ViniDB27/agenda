@@ -1,4 +1,4 @@
-const { Contato, findById } = require('../models/contatoModel');
+const { Contato, findById, deleteContato } = require('../models/contatoModel');
 
 exports.index = (req, res) => {
   return res.render('contato', { contato: {} });
@@ -48,7 +48,7 @@ exports.edit = async (req, res) => {
 
     if(contato.erros.length > 0){
       req.flash('errors', contato.erros);
-      return req.session.save(() => res.redirect('/contato'));
+      return req.session.save(() => res.redirect('/'));
     }
 
     req.flash('success', 'Contato salvo com sucesso!');
@@ -57,4 +57,15 @@ exports.edit = async (req, res) => {
     console.log(error);
     return res.render('404');
   }
+};
+
+exports.delete = async (req, res) => {
+  if(!req.params.id) {
+    return res.render('404');
+  }
+
+  await deleteContato(req.params.id);
+
+  req.flash('success', 'Contato excluido com sucesso!');
+  return req.session.save(() => res.redirect('/'));
 };

@@ -77,5 +77,10 @@ async function findById(id){
   return contatoModel.findById(id);
 }
 
-module.exports = { Contato, findById, findAll };
+async function deleteContato(id) {
+  if (!mongose.Types.ObjectId.isValid(id)) return;
+  return contatoModel.findOneAndDelete({ _id: id });
+}
+
+module.exports = { Contato, findById, findAll, deleteContato };
   

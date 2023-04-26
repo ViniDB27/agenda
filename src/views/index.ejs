@@ -20,8 +20,8 @@
                         <td><%= contato.lastname %></td>
                         <td><%= contato.phone %></td>
                         <td><%= contato.email %></td>
-                        <td><a href="/contato/<%= contato.id %>" class="btn btn-primary">Editar</a></td>
-                        <td><a href="/contato/delte/<%= contato.id %>" class="btn btn-danger">Excluir</a></td>
+                        <td><a href="/contato/<%= contato._id %>" class="btn btn-primary">Editar</a></td>
+                        <td><a href="/contato/delete/<%= contato._id %>" class="btn btn-danger">Excluir</a></td>
                     </tr>
                 <% }) %>
             
